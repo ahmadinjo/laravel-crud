@@ -43,6 +43,8 @@
         </form>
         <script>
             const deleteProduct = (e) => {
+                const isConfirmed = confirm('Are you sure you want to delete the product?');
+                if (!isConfirmed) return;
                 const id = e.getAttribute('data-id');
                 const delete_form = document.getElementById('delete-form');
                 delete_form.setAttribute('action', `/products/${id}`);
