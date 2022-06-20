@@ -30,3 +30,6 @@ Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('del
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/{slug}', [ProductController::class, 'show'])->name('show_product');
 require __DIR__.'/auth.php';
+require __DIR__.'/post.php';
+require __DIR__.'/category.php';
+require __DIR__.'/tag.php';
