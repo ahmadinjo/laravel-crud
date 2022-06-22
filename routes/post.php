@@ -13,3 +13,5 @@
     
     
     Route::resource('posts', PostController::class);
+    Route::get('posts/{post}/category', [PostController::class, 'showCategory']);
+    Route::get('posts/{post}/tags', [PostController::class, 'showTags']);

@@ -13,3 +13,4 @@
     
     
     Route::resource('tags', TagController::class);
+    Route::get('tags/{tag}/posts', [TagController::class, 'showPosts']);

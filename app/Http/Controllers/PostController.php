@@ -11,6 +11,18 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    
+    public function __construct () {
+        /**
+         * this is to add middleware to one of the methods e.g create().
+         *for example this code adds the login page to the create and store pages of the post , so if you ae not logged in you cant create or enter the store page
+         *
+         *
+         */
+        $this->middleware('auth')->only(['create', 'store']);
+        $this->middleware('auth.post')->only(['edit', 'update', 'destroy']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +30,7 @@ class PostController extends Controller
      */
     public function index () {
         //
-        $posts = Post::with(['tags', 'category', 'author'])->get();
+        $posts = Post::with(['tags', 'category', 'author'])->orderBy('created_at', 'DESC')->paginate(1);
         
         return view('post.index', ['posts' => $posts]);
     }
@@ -140,5 +152,12 @@ class PostController extends Controller
         $post->delete();
         
         return redirect()->route('posts.index');
+    }
+    
+    public function showCategory (Post $post) {
+        return view('post.category', ['post' => $post]);
+    }
+    public function showTags (Post $post) {
+        return view('post.tags', ['post' => $post]);
     }
 }

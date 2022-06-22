@@ -116,4 +116,9 @@ class TagController extends Controller
         $tag->delete();
         
         return redirect()->route('tags.index');
-    }}
+    }
+    
+    public function showPosts (Tag $tag) {
+        return view('tag.posts', ['tag' => $tag]);
+    }
+}

@@ -5,12 +5,12 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{ $post->title }} - Tags</title>
+        <title>{{ $tag->name }} - Posts</title>
     </head>
     <body>
         <ul>
-            @foreach($post->tags as $tag)
-                <li>{{$tag->name}}</li>
+            @foreach($tag->posts as $post)
+                <li>{{$post->title}}</li>
             @endforeach
         </ul>
     </body>

@@ -117,4 +117,10 @@
             return redirect()->route('categories.index');
         }
         
+        public function showPosts ($slug) {
+            $category = Category::with('posts')->where('slug', $slug)->firstOrFail();
+            
+            return view('category.posts', ['category' => $category]);
+        }
+        
     }

@@ -14,3 +14,4 @@
     
     
     Route::resource('categories', CategoryController::class);
+    Route::get('categories/{slug}/posts', [CategoryController::class, 'showPosts']);
